@@ -1,0 +1,49 @@
+
+version: "3"
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: django_sample
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 9000:80
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=password
+  server: 
+    build:
+      context: ./djangoVueSampleTodo
+      dockerfile: Dockerfile
+    volumes:
+      - './djangoVueSampleTodo:/usr/src'
+    ports:
+      - "8000:8000"
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - './frontend:/usr/src'
+    ports:
+      - "8080:8080"
+    privileged: true
+    tty: true
+    stdin_open: true
+    depends_on:
+      - server
+    environment:
+      - NODE_ENV=development
+volumes:
+    mysql_data:

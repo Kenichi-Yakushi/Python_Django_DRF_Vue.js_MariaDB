@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <router-link to="/">AxiosIndex</router-link>
     <router-view/>
   </div>
 </template>

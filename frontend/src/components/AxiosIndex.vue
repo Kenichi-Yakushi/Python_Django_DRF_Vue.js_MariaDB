@@ -30,7 +30,7 @@ export default {
   compilerOptions: {
     delimiters: ['[[', ']]']
   },
-  mounted () {
+  mounted: function () {
     this.axios
       .get('http://localhost:8000/products/list')
       .then(response => (this.products_product = response.data))

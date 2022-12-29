@@ -21,6 +21,7 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    "no-unused-expressions": ["error", { "allowTernary": true }],
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development

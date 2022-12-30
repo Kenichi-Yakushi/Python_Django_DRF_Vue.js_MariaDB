@@ -2,7 +2,7 @@
   <div id="app">
     <h1>AxiosIndex</h1>
     <h2>Essential Links</h2>
-    {{ products_product }}
+    {{ productsRes }}
     <br/><br/>
     <button v-on:click="fetch">Reverse json</button>
 
@@ -12,7 +12,7 @@
         <th>name</th>
         <th>price</th>
         </tr>
-        <tr v-for="(value, key) in products_product" :key="key">
+        <tr v-for="(value, key) in productsRes" :key="key">
         <td>{{ value.id }}</td>
         <td>{{ value.name }}</td>
         <td>{{ value.price }}</td>
@@ -24,18 +24,27 @@
 <script>
 import axios from 'axios'
 
+axios.defaults.baseURL = 'http://localhost:8000/products/list/'
+axios.defaults.headers.common['Accept'] = 'application/json'
+axios.defaults.headers.common['Content-Type'] = 'application/json;charset=utf-8'
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:8080/products/list/'
+
 export default {
   name: 'AxiosIndex',
   data () {
     return {
-      products_product: []
+      productsRes: []
     }
   },
   methods: {
-    fetch: function () {
-      axios.get('http://localhost:8000/products/list')
+    fetch: function (res) {
+      axios.get('http://localhost:8000/products/list/', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(res)
+      })
         .then((res) => {
-          this.products_product = res.data
+          this.productsRes = res.data
         })
         .catch(error => console.log(error))
     }

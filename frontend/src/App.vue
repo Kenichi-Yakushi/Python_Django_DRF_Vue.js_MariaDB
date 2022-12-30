@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <router-link to="/">AxiosIndex</router-link>
+    <router-link to="/">HelloWorld</router-link><br/><br/>
+    <router-link to="/products/list">AxiosIndex</router-link>
     <router-view/>
   </div>
 </template>

@@ -2,7 +2,9 @@
   <div id="app">
     <h1>AxiosIndex</h1>
     <h2>Essential Links</h2>
-    [[ products_product ]]
+    {{ products_product }}
+    <br/><br/>
+    <button v-on:click="fetch">Reverse json</button>
 
     <table border="1">
         <tr>
@@ -20,6 +22,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'AxiosIndex',
   data () {
@@ -27,13 +31,17 @@ export default {
       products_product: []
     }
   },
+  methods: {
+    fetch: function () {
+      axios.get('http://localhost:8000/products/list')
+        .then((res) => {
+          this.products_product = res.data
+        })
+        .catch(error => console.log(error))
+    }
+  },
   compilerOptions: {
     delimiters: ['[[', ']]']
-  },
-  mounted: function () {
-    this.axios
-      .get('http://localhost:8000/products/list')
-      .then(response => (this.products_product = response.data))
   }
 }
 </script>

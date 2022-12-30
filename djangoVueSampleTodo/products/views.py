@@ -20,6 +20,10 @@ class ProductDummyApiView(APIView):
             {"name": "DUMMY!"},
             {"price": "0"}
         ])
+# class ProductList(generics.ListAPIView):
+#     """ View to list all users"""
+#     queryset = Product.objects.all()
+#     serializer_class = ProductSerializer
 
 @api_view(['GET'])
 def product_list(request):

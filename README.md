@@ -1,5 +1,8 @@
 # Python_Django_DRF_Vue.js_MariaDB
-`settings_local.py
+
+settings_local.py
+
+```
 SECRET_KEY = ''
 
 DATABASES = {
@@ -12,4 +15,4 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-`
+```

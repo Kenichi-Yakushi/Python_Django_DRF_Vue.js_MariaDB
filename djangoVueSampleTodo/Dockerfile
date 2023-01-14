@@ -18,6 +18,7 @@ RUN pip install pymysql
 RUN pip install mysqlclient
 RUN pip install djangorestframework
 RUN pip install django-cors-headers
+RUN pip install urllib3
 
 # install dependencies
 # RUN pip install --upgrade pip

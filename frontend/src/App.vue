@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <router-link to="/">HelloWorld</router-link><br/><br/>
-    <router-link to="/products/list">AxiosCreateListView</router-link><br/><br/>
+    <router-link to="/">トップページ</router-link><br/><br/>
+    <router-link to="/products/list">一覧/登録 画面</router-link><br/><br/>
     <router-view/>
   </div>
 </template>
@@ -20,5 +20,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+a {
+  text-decoration: none;
 }
 </style>

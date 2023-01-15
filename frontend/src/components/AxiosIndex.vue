@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <h1>AxiosCreate</h1>
+    <h1>登録フォーム</h1>
     <br/><br/>
     <form submit.prevent="submit">
-      <input type="text" id="name" v-model="name"  placeholder="edit me add name" /><br/><br/>
-      <input type="text" id="price" v-model="price"  placeholder="edit me add price" /><br/><br/>
+      <input type="text" id="name" v-model="name"  placeholder="名前を入力してください" /><br/><br/>
+      <input type="text" id="price" v-model="price"  placeholder="価格を入力してください" /><br/><br/>
 
       <p v-if="errors.length">
         <b>以下の要件を満たす、フォームの入力をしてください。</b>
@@ -13,20 +13,19 @@
         </ul>
       </p>
 
-      <button type="submit" v-on:click="addContents">Add Contents</button>
+      <button type="submit" v-on:click="addContents">登録</button>
     </form>
 
-    <h1>AxiosIndex</h1>
-    {{ productsRes }}<br/><br/>
-    <button v-on:click="fetch">Reverse json</button><br/><br/>
+    <h1>一覧テーブル</h1>
+    <!-- {{ productsRes }} --><br/><br/>
+    <button v-on:click="fetch">一覧取得</button><br/><br/>
 
     <table border="1">
       <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>price</th>
+      <th>項番</th>
+      <th>名前</th>
+      <th>価格</th>
       <th>詳細</th>
-      <th>削除</th>
       </tr>
       <tr v-for="(value, key) in productsRes" :key="key">
       <td>{{ value.id }}</td>
@@ -35,11 +34,6 @@
       <td>
         <button>
           <router-link :to="{ name: 'AxiosDetail', params: { id: value.id }}">詳細</router-link>
-        </button>
-      </td>
-      <td>
-        <button>
-          <router-link :to="{ name: 'AxiosDetail', params: { id: value.id }}">削除</router-link>
         </button>
       </td>
       </tr>

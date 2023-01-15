@@ -1,20 +1,20 @@
 <template>
   <div id="app">
-    <h1>AxiosDetail</h1>
+    <h1>詳細画面</h1>
     <br/><br/>
     <form submit.prevent="submit">
       <table border="1">
         <tr>
-          <th>id</th>
-          <th>name</th>
-          <th>price</th>
+          <th>項番</th>
+          <th>名前</th>
+          <th>価格</th>
           <th>編集</th>
           <th>削除</th>
         </tr>
         <tr>
-          <td><input type="text" id="id" v-model="id" placeholder="edit me add name" /></td>
-          <td><input type="text" id="name" v-model="name" placeholder="edit me add name" /></td>
-          <td><input type="text" id="price" v-model="price" placeholder="edit me add name" /></td>
+          <td><input type="text" id="id" v-model="id"  readonly="readonly" placeholder="編集しないでください" /></td>
+          <td><input type="text" id="name" v-model="name" placeholder="名前を入力してください" /></td>
+          <td><input type="text" id="price" v-model="price" placeholder="価格を入力してください" /></td>
           <td><button type="submit" v-on:click="updateContents">編集</button></td>
           <td><button type="submit" v-on:click="deleteContents">削除</button></td>
         </tr>
@@ -43,6 +43,7 @@ export default {
   data () {
     return {
       productsUpdate: [],
+      productsDelete: [],
       id: '',
       name: '',
       price: '',
@@ -74,6 +75,7 @@ export default {
       })
         .then((res) => {
           this.productsUpdate = res.data
+          this.$router.push({path: '/products/list'})
         })
         .catch((error) => {
           console.log(error)
@@ -93,32 +95,18 @@ export default {
           }
         })
     },
-    deleteContents: function () {
-      axios.post('http://localhost:8000/products/list/', {
+    deleteContents: function (res) {
+      axios.delete(`http://localhost:8000/products/list/${this.$route.params.id}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        name: this.name,
-        price: this.price
+        body: JSON.stringify(res)
       })
         .then((res) => {
-          this.productsUpdate = res.data
+          this.productsDelete = res.data
+          this.$router.push({path: '/products/list'})
         })
         .catch((error) => {
           console.log(error)
-          this.errors = []
-
-          if (!this.name) {
-            this.errors.push('名前は必須です。')
-          }
-          if (!this.price) {
-            this.errors.push('価格は必須です。')
-          } else if (typeof this.price !== 'number') {
-            this.errors.push('価格は有効な整数を入力してください。')
-          }
-
-          if (!this.errors.length) {
-            return true
-          }
         })
     }
   },

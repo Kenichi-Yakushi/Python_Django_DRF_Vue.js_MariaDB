@@ -1,10 +1,24 @@
 <template>
   <div id="app">
-    <h1>AxiosCreate</h1>
+    <h1>AxiosDetail</h1>
     <br/><br/>
     <form submit.prevent="submit">
-      <input type="text" id="name" v-model="name"  placeholder="edit me add name" /><br/><br/>
-      <input type="text" id="price" v-model="price"  placeholder="edit me add price" /><br/><br/>
+      <table border="1">
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>price</th>
+          <th>編集</th>
+          <th>削除</th>
+        </tr>
+        <tr>
+          <td><input type="text" id="id" v-model="id" placeholder="edit me add name" /></td>
+          <td><input type="text" id="name" v-model="name" placeholder="edit me add name" /></td>
+          <td><input type="text" id="price" v-model="price" placeholder="edit me add name" /></td>
+          <td><button type="submit" v-on:click="updateContents">編集</button></td>
+          <td><button type="submit" v-on:click="deleteContents">削除</button></td>
+        </tr>
+      </table>
 
       <p v-if="errors.length">
         <b>以下の要件を満たす、フォームの入力をしてください。</b>
@@ -12,39 +26,7 @@
           <li v-for="(error, key) in errors" :key="key">{{ error }}</li>
         </ul>
       </p>
-
-      <button type="submit" v-on:click="addContents">Add Contents</button>
     </form>
-
-    <h1>AxiosIndex</h1>
-    {{ productsRes }}<br/><br/>
-    <button v-on:click="fetch">Reverse json</button><br/><br/>
-
-    <table border="1">
-      <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>price</th>
-      <th>詳細</th>
-      <th>削除</th>
-      </tr>
-      <tr v-for="(value, key) in productsRes" :key="key">
-      <td>{{ value.id }}</td>
-      <td>{{ value.name }}</td>
-      <td>{{ value.price }}</td>
-      <td>
-        <button>
-          <router-link :to="{ name: 'AxiosDetail', params: { id: value.id }}">詳細</router-link>
-        </button>
-      </td>
-      <td>
-        <button>
-          <router-link :to="{ name: 'AxiosDetail', params: { id: value.id }}">削除</router-link>
-        </button>
-      </td>
-      </tr>
-      <router-view/>
-    </table>
   </div>
 </template>
 
@@ -57,11 +39,9 @@ axios.defaults.headers.common['Content-Type'] = 'application/json;charset=utf-8'
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:8080/products/list/'
 
 export default {
-  name: 'AxiosIndex',
+  name: 'AxiosDetail',
   data () {
     return {
-      productsRes: [],
-      productsCreate: [],
       productsUpdate: [],
       id: '',
       name: '',
@@ -69,19 +49,51 @@ export default {
       errors: []
     }
   },
+  mounted () {
+    axios.get(`http://localhost:8000/products/list/${this.$route.params.id}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      name: this.name,
+      price: this.price
+    })
+      .then((res) => {
+        this.id = res.data.id
+        this.name = res.data.name
+        this.price = res.data.price
+      })
+      .catch(error => console.log(error))
+  },
   methods: {
-    fetch: function (res) {
-      axios.get('http://localhost:8000/products/list/', {
-        method: 'GET',
+    updateContents: function (res) {
+      axios.put(`http://localhost:8000/products/list/${this.$route.params.id}`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(res)
+        body: JSON.stringify(res),
+        name: this.name,
+        price: this.price
       })
         .then((res) => {
-          this.productsRes = res.data
+          this.productsUpdate = res.data
         })
-        .catch(error => console.log(error))
+        .catch((error) => {
+          console.log(error)
+          this.errors = []
+
+          if (!this.name) {
+            this.errors.push('名前は必須です。')
+          }
+          if (!this.price) {
+            this.errors.push('価格は必須です。')
+          } else if (typeof this.price !== 'number') {
+            this.errors.push('価格は有効な整数を入力してください。')
+          }
+
+          if (!this.errors.length) {
+            return true
+          }
+        })
     },
-    addContents: function () {
+    deleteContents: function () {
       axios.post('http://localhost:8000/products/list/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -89,7 +101,7 @@ export default {
         price: this.price
       })
         .then((res) => {
-          this.productsCreate = res.data
+          this.productsUpdate = res.data
         })
         .catch((error) => {
           console.log(error)

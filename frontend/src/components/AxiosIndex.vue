@@ -25,11 +25,15 @@
       <th>id</th>
       <th>name</th>
       <th>price</th>
+      <th>詳細</th>
+      <th>削除</th>
       </tr>
       <tr v-for="(value, key) in productsRes" :key="key">
       <td>{{ value.id }}</td>
       <td>{{ value.name }}</td>
       <td>{{ value.price }}</td>
+      <td><button>詳細</button></td>
+      <td><button>削除</button></td>
       </tr>
     </table>
   </div>

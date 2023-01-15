@@ -6,13 +6,19 @@
       <input type="text" id="name" v-model="name"  placeholder="edit me add name" /><br/><br/>
       <input type="text" id="price" v-model="price"  placeholder="edit me add price" /><br/><br/>
 
+      <p v-if="errors.length">
+        <b>以下の要件を満たす、フォームの入力をしてください。</b>
+        <ul>
+          <li v-for="(error, key) in errors" :key="key">{{ error }}</li>
+        </ul>
+      </p>
+
       <button type="submit" v-on:click="addContents">Add Contents</button>
     </form>
 
     <h1>AxiosIndex</h1>
-    {{ productsRes }}
-    <br/><br/>
-    <button v-on:click="fetch">Reverse json</button>
+    {{ productsRes }}<br/><br/>
+    <button v-on:click="fetch">Reverse json</button><br/><br/>
 
     <table border="1">
       <tr>
@@ -42,7 +48,8 @@ export default {
   data () {
     return {
       productsRes: [],
-      productsCreate: []
+      productsCreate: [],
+      errors: []
     }
   },
   methods: {
@@ -67,7 +74,23 @@ export default {
         .then((res) => {
           this.productsCreate = res.data
         })
-        .catch(error => console.log(error))
+        .catch((error) => {
+          console.log(error)
+          this.errors = []
+
+          if (!this.name) {
+            this.errors.push('名前は必須です。')
+          }
+          if (!this.price) {
+            this.errors.push('価格は必須です。')
+          } else if (typeof this.price !== 'number') {
+            this.errors.push('価格は有効な整数を入力してください。')
+          }
+
+          if (!this.errors.length) {
+            return true
+          }
+        })
     }
   },
   compilerOptions: {
@@ -91,5 +114,8 @@ li {
 }
 a {
   color: #42b983;
+}
+table {
+  margin: auto;
 }
 </style>

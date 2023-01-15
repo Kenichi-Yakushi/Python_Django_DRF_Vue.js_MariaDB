@@ -49,6 +49,8 @@ export default {
     return {
       productsRes: [],
       productsCreate: [],
+      name: '',
+      price: '',
       errors: []
     }
   },

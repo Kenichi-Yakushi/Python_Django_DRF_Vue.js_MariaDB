@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # API 追加
     path('products/', include('products.urls')),
+    # 日記アプリの追加
+    path('diary/', include('diary.urls')),
 ]

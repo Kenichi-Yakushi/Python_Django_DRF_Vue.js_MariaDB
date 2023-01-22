@@ -1,23 +1,25 @@
 <template>
-  <div id="app">
+  <div class="ui container" id="app">
     <h1>詳細画面</h1>
     <br/><br/>
     <form>
-      <table border="1">
-        <tr>
+      <table class="ui celled table">
+        <thead>
           <th>項番</th>
           <th>名前</th>
           <th>価格</th>
           <th>編集</th>
           <th>削除</th>
-        </tr>
-        <tr>
-          <td><input type="text" id="id" v-model="id"  readonly="readonly" placeholder="編集しないでください" /></td>
-          <td><input type="text" id="name" v-model="name" placeholder="名前を入力してください" /></td>
-          <td><input type="text" id="price" v-model="price" placeholder="価格を入力してください" /></td>
-          <td><button type="submit" v-on:click="updateContents($event)">編集</button></td>
-          <td><button type="submit" v-on:click="deleteContents($event)">削除</button></td>
-        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="ui disabled input"><input type="text" id="id" v-model="id"  readonly="readonly" placeholder="編集しないでください" /></div></td>
+            <td><div class="ui input"><input type="text" id="name" v-model="name" placeholder="名前を入力してください" /></div></td>
+            <td><div class="ui input"><input type="text" id="price" v-model="price" placeholder="価格を入力してください" /></div></td>
+            <td><sui-button color="green" content="編集" icon="edit" type="submit" v-on:click="updateContents($event)"></sui-button></td>
+            <td><sui-button color="red" content="削除" icon="eraser" type="submit" v-on:click="deleteContents($event)"></sui-button></td>
+          </tr>
+        </tbody>
       </table>
 
       <p v-if="errors.length">

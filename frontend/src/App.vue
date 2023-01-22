@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="ui container" id="app">
     <router-link to="/">トップページ</router-link><br/><br/>
     <router-link to="/products/list">一覧/登録 画面</router-link><br/><br/>
     <router-view/>

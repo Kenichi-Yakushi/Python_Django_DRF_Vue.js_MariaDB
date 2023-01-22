@@ -1,10 +1,14 @@
 <template>
-  <div id="app">
+  <div class="ui container" id="app">
     <h1>登録フォーム</h1>
     <br/><br/>
     <form>
-      <input type="text" id="name" v-model="name"  placeholder="名前を入力してください" /><br/><br/>
-      <input type="text" id="price" v-model="price"  placeholder="価格を入力してください" /><br/><br/>
+      <div class="ui input">
+        <input type="text" id="name" v-model="name"  placeholder="名前を入力してください" />
+      </div><br/><br/>
+      <div class="ui input">
+        <input type="text" id="price" v-model="price"  placeholder="価格を入力してください" />
+      </div><br/><br/>
 
       <p v-if="errors.length">
         <b>以下の要件を満たす、フォームの入力をしてください。</b>
@@ -13,30 +17,32 @@
         </ul>
       </p>
 
-      <button type="submit" v-on:click="addContents">登録</button>
+      <sui-button color="blue" content="登録" icon="save outline" type="submit" v-on:click="addContents"></sui-button>
     </form>
 
     <h1>一覧テーブル</h1>
     <!-- {{ productsRes }} --><br/><br/>
-    <button v-on:click="fetch">一覧取得</button><br/><br/>
+    <sui-button color="grey" content="一覧取得" icon="eye" v-on:click="fetch"></sui-button><br/><br/>
 
-    <table border="1">
-      <tr>
-      <th>項番</th>
-      <th>名前</th>
-      <th>価格</th>
-      <th>詳細</th>
-      </tr>
-      <tr v-for="(value, key) in productsRes" :key="key">
-      <td>{{ value.id }}</td>
-      <td>{{ value.name }}</td>
-      <td>{{ value.price }}</td>
-      <td>
-        <button>
-          <router-link :to="{ name: 'AxiosDetail', params: { id: value.id }}">詳細</router-link>
-        </button>
-      </td>
-      </tr>
+    <table class="ui celled table">
+      <thead>
+        <th>項番</th>
+        <th>名前</th>
+        <th>価格</th>
+        <th>詳細</th>
+      </thead>
+      <tbody>
+        <tr v-for="(value, key) in productsRes" :key="key">
+          <td>{{ value.id }}</td>
+          <td>{{ value.name }}</td>
+          <td>{{ value.price }}</td>
+          <td>
+            <sui-button basic icon="crosshairs">
+              <router-link :to="{ name: 'AxiosDetail', params: { id: value.id }}">詳細</router-link>
+            </sui-button>
+          </td>
+        </tr>
+      </tbody>
       <router-view/>
     </table>
   </div>

@@ -57,15 +57,29 @@
 
       {% block header%}{% endblock %}
 
-      {% block contents%}{% endblock %}
+        {% if messages %}
+          <div class="container my-div-style">
+              <div class="row">
+                  <ul class="messages" style="list-style: none;">
+                      {% for message in messages %}
+                      <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+                          {{ message }}
+                      </li>
+                      {% endfor %}
+                  </ul>          
+              </div>
+          </div>
+        {% endif %}
 
-      <!-- Footer -->
-      <footer class="py-5 bg-black">
-        <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Private Dairy 2021</p></div>
-      </footer>
+        {% block contents%}{% endblock %}
 
-      <!-- Bootstrap core JS-->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-    </div>
+        <!-- Footer -->
+        <footer class="py-5 bg-black">
+          <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Private Dairy 2021</p></div>
+        </footer>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+  	</div>
   </body>
 </html>

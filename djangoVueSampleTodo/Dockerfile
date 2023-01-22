@@ -19,6 +19,9 @@ RUN pip install mysqlclient
 RUN pip install djangorestframework
 RUN pip install django-cors-headers
 RUN pip install urllib3
+# 日記アプリ用
+RUN pip install django-allauth
+RUN pip install django-bootstrap5
 
 # install dependencies
 # RUN pip install --upgrade pip

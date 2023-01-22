@@ -96,7 +96,6 @@ export default {
             }
           })
       } else {
-        event.preventDefault()
       }
     },
     deleteContents: function (res, event) {
@@ -114,7 +113,6 @@ export default {
             console.log(error)
           })
       } else {
-        event.preventDefault()
       }
     }
   },

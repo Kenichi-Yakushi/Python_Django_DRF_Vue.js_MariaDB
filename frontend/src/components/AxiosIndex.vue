@@ -2,7 +2,7 @@
   <div id="app">
     <h1>登録フォーム</h1>
     <br/><br/>
-    <form submit.prevent="submit">
+    <form>
       <input type="text" id="name" v-model="name"  placeholder="名前を入力してください" /><br/><br/>
       <input type="text" id="price" v-model="price"  placeholder="価格を入力してください" /><br/><br/>
 

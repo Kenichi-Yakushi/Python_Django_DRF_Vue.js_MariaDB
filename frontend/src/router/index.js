@@ -9,7 +9,7 @@ import AxiosDetail from '@/components/AxiosDetail'
 Vue.use(VueRouter)
 
 export default new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',

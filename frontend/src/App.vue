@@ -7,9 +7,16 @@
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+import Vue from 'vue'
+import AxiosIndex from './components/AxiosIndex.vue'
+import AxiosDetail from './components/AxiosDetail.vue'
+export default Vue.extend({
+  name: 'App',
+  components: {
+    AxiosIndex,
+    AxiosDetail
+  }
+})
 </script>
 
 <style>

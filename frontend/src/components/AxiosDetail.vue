@@ -2,7 +2,7 @@
   <div id="app">
     <h1>詳細画面</h1>
     <br/><br/>
-    <form submit.prevent="submit">
+    <form>
       <table border="1">
         <tr>
           <th>項番</th>
@@ -15,8 +15,8 @@
           <td><input type="text" id="id" v-model="id"  readonly="readonly" placeholder="編集しないでください" /></td>
           <td><input type="text" id="name" v-model="name" placeholder="名前を入力してください" /></td>
           <td><input type="text" id="price" v-model="price" placeholder="価格を入力してください" /></td>
-          <td><button type="submit" v-on:click="updateContents">編集</button></td>
-          <td><button type="submit" v-on:click="deleteContents">削除</button></td>
+          <td><button type="submit" v-on:click="updateContents($event)">編集</button></td>
+          <td><button type="submit" v-on:click="deleteContents($event)">削除</button></td>
         </tr>
       </table>
 
@@ -65,49 +65,57 @@ export default {
       .catch(error => console.log(error))
   },
   methods: {
-    updateContents: function (res) {
-      axios.put(`http://localhost:8000/products/list/${this.$route.params.id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(res),
-        name: this.name,
-        price: this.price
-      })
-        .then((res) => {
-          this.productsUpdate = res.data
-          this.$router.push({path: '/products/list'})
+    updateContents: function (res, event) {
+      if (confirm('本当に編集しますか？', event)) {
+        axios.put(`http://localhost:8000/products/list/${this.$route.params.id}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(res),
+          name: this.name,
+          price: this.price
         })
-        .catch((error) => {
-          console.log(error)
-          this.errors = []
+          .then((res) => {
+            this.productsUpdate = res.data
+            this.$router.push({path: '/products/list'})
+          })
+          .catch((error) => {
+            console.log(error)
+            this.errors = []
 
-          if (!this.name) {
-            this.errors.push('名前は必須です。')
-          }
-          if (!this.price) {
-            this.errors.push('価格は必須です。')
-          } else if (typeof this.price !== 'number') {
-            this.errors.push('価格は有効な整数を入力してください。')
-          }
+            if (!this.name) {
+              this.errors.push('名前は必須です。')
+            }
+            if (!this.price) {
+              this.errors.push('価格は必須です。')
+            } else if (typeof this.price !== 'number') {
+              this.errors.push('価格は有効な整数を入力してください。')
+            }
 
-          if (!this.errors.length) {
-            return true
-          }
-        })
+            if (!this.errors.length) {
+              return true
+            }
+          })
+      } else {
+        event.preventDefault()
+      }
     },
-    deleteContents: function (res) {
-      axios.delete(`http://localhost:8000/products/list/${this.$route.params.id}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(res)
-      })
-        .then((res) => {
-          this.productsDelete = res.data
-          this.$router.push({path: '/products/list'})
+    deleteContents: function (res, event) {
+      if (confirm('本当に削除しますか？', event)) {
+        axios.delete(`http://localhost:8000/products/list/${this.$route.params.id}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(res)
         })
-        .catch((error) => {
-          console.log(error)
-        })
+          .then((res) => {
+            this.productsDelete = res.data
+            this.$router.push({path: '/products/list'})
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      } else {
+        event.preventDefault()
+      }
     }
   },
   compilerOptions: {

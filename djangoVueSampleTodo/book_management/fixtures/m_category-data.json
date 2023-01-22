@@ -1,0 +1,38 @@
+[
+    {
+      "model": "book_management.category",
+      "fields": {
+        "name": "ひと",
+        "color": "#ff7f7f"
+      }
+    },
+    {
+      "model": "book_management.category",
+      "fields": {
+        "name": "地名",
+        "color": "#ff7fbf"
+      }
+    },
+    {
+      "model": "book_management.category",
+      "fields": {
+        "name": "行事",
+        "color": "#ff7fff"
+      }
+    },
+    {
+      "model": "book_management.category",
+      "fields": {
+        "name": "食べ物",
+        "color": "#bf7fff"
+      }
+    },
+    {
+      "model": "book_management.category",
+      "fields": {
+        "name": "その他",
+        "color": "#c0c0c0"
+      }
+    }
+  ]
+  

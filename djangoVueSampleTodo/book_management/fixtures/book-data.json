@@ -1,0 +1,133 @@
+[
+    {
+      "model": "book_management.book",
+      "fields": {
+        "name": "地名のひみつパート2",
+        "category": 2,
+        "author": 1,
+        "lead_text": "海外、国内の地名の由来をゆかいなイラストとともに、歴史的背景をまじえて解説。短いお話とコラムで構成しています。",
+        "amount": "100",
+        "isbn": "9784265039500",
+        "publication_date": "2002-04-10",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.book",
+      "fields": {
+        "name": "人名のひみつパート2",
+        "category": 1,
+        "author": 1,
+        "lead_text": "「名字はこうしてできた」「家紋ってなに？」などのお話と１００以上の名字の由来をゆかいなイラストとともに紹介しています。",
+        "amount": "100",
+        "isbn": "9784265039494",
+        "publication_date": "2002-03-11",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.book",
+      "fields": {
+        "name": "行事の名前のひみつ",
+        "category": 3,
+        "author": 1,
+        "lead_text": "お正月、節分、バレンタインデー、七夕やクリスマスなど、身近な年中行事の由来を、短いお話とコラムで紹介します。",
+        "amount": "100",
+        "isbn": "9784265039487",
+        "publication_date": "2002-02-11",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.book",
+      "fields": {
+        "name": "たべものの名前のひみつ",
+        "category": 4,
+        "author": 1,
+        "lead_text": "たべものの名前の由来や歴史などを楽しく紹介。短いお話の中に、約１００の食べ物が登場。この１冊できみも食べ物の名前博士。",
+        "amount": "100",
+        "isbn": "9784265039470",
+        "publication_date": "2001-12-10",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.book",
+      "fields": {
+        "name": "のりものの名前のひみつ",
+        "category": 5,
+        "author": 1,
+        "lead_text": "車はどのように発明されたか？「ジャンボジェット機」の意味は？など、のりものの歴史と名前の由来がよくわかる本。",
+        "amount": "100",
+        "isbn": "9784265039463",
+        "publication_date": "2001-10-10",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.book",
+      "fields": {
+        "name": "道具の名前のなぞ",
+        "category": 5,
+        "author": 1,
+        "lead_text": "文房具や学校で使う道具，家の中での器具類など，ふだん身近に接している道具の誕生の歴史と名前のいわれをわかりやすく紹介。",
+        "amount": "100",
+        "isbn": "9784265039456",
+        "publication_date": "2000-03-30",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.book",
+      "fields": {
+        "name": "スポーツの名前のなぞ",
+        "category": 5,
+        "author": 1,
+        "lead_text": "野球，サッカーなど，いろいろなスポーツの起源と名前のいわれをイラスト入りでやさしく解説。これできみはスポーツの名前博士！",
+        "amount": "100",
+        "isbn": "9784265039449",
+        "publication_date": "2000-03-10",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.book",
+      "fields": {
+        "name": "生きものの名前のなぞ",
+        "category": 5,
+        "author": 1,
+        "lead_text": "身近な動物や植物の名前の由来をわかりやすく紹介。ねこやねずみ，カエルなどの名前がどこからきたのかを楽しいイラストで説明。",
+        "amount": "100",
+        "isbn": "9784265039432",
+        "publication_date": "2000-02-10",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.book",
+      "fields": {
+        "name": "地名のひみつ",
+        "category": 2,
+        "author": 1,
+        "lead_text": "日本の代表的な地名，町村合併によってできたユニークな地名，都道府県名，山や川の名前の由来などを豊富なイラストで解説。",
+        "amount": "100",
+        "isbn": "9784265039425",
+        "publication_date": "1999-12-30",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.book",
+      "fields": {
+        "name": "人名のひみつ",
+        "category": 1,
+        "author": 1,
+        "lead_text": "日本で一番多い名字は？人の名字約２００の由来をゆかいなイラストでわかりやすく解説。歴史上の人物や珍しい名前の由来も紹介。",
+        "amount": "100",
+        "isbn": "9784265039418",
+        "publication_date": "1999-11-11",
+        "created_at": "2022-12-03"
+      }
+    }
+  ]
+  

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'urllib3',
     'products',
+    'book_management'
 ]
 
 MIDDLEWARE = [

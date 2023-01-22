@@ -3,4 +3,5 @@ node_modules
 package-lock.json
 ./djangoVueSampleTodo/djangoVueSampleTodo/setting_local.py
 ./frontend/node_modules
+/book_management/migrations/
 

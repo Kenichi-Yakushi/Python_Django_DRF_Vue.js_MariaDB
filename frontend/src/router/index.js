@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import AxiosIndex from '@/components/AxiosIndex'
 import AxiosDetail from '@/components/AxiosDetail'
+import BookList from '@/components/BookList'
 
 // Vue.use(Router)
 Vue.use(VueRouter)
@@ -25,6 +26,12 @@ export default new VueRouter({
       path: '/products/list/:id',
       name: 'AxiosDetail',
       component: AxiosDetail
+    },
+    {
+      path: '/books',
+      name: 'books',
+      component: BookList
     }
+
   ]
 })

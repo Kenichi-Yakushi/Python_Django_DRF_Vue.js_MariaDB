@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # API 追加
     path('products/', include('products.urls')),
+    # 図書アプリ
+    path('book_management/', include('book_management.urls')),
 ]

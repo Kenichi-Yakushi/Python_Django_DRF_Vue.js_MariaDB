@@ -1,0 +1,103 @@
+[
+    {
+      "model": "book_management.branch",
+      "fields": {
+        "name": "中央図書館",
+        "address": "東京都渋谷区神宮前1-4-1",
+        "phone": "03-3403-2591",
+        "remark": "鉄筋コンクリート造 地下1階地上5階 4,450㎡（294席）",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.branch",
+      "fields": {
+        "name": "西原図書館",
+        "address": "東京都渋谷区西原2-28-9",
+        "phone": "03-3460-8535",
+        "remark": "鉄筋コンクリート造 地下1階地上3階の2・3階部分 631㎡（61席）",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.branch",
+      "fields": {
+        "name": "白根図書 サービススポット",
+        "address": "東京都渋谷区東4-9-1",
+        "phone": "03-3486-2820",
+        "remark": "鉄筋コンクリート造 地下2階地上2階 1,731㎡（0席）",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.branch",
+      "fields": {
+        "name": "富ヶ谷図書館",
+        "address": "東京都渋谷区上原1-46-2",
+        "phone": "03-3468-9020",
+        "remark": "鉄筋コンクリート造 地上2階建ての1階の一部 510㎡（43席）",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.branch",
+      "fields": {
+        "name": "笹塚図書館",
+        "address": "東京都渋谷区笹塚1-47-1　メルクマール京王笹塚4階",
+        "phone": "03-3460-6784",
+        "remark": "鉄筋コンクリート造 地上21階地下2階の4階部分 440㎡（57席）",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.branch",
+      "fields": {
+        "name": "本町図書館",
+        "address": "東京都渋谷区本町1-33-5",
+        "phone": "03-5371-4833",
+        "remark": "鉄筋コンクリート造 地下1階地上3階 1,400㎡（97席）",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.branch",
+      "fields": {
+        "name": "こもれび大和田図書館",
+        "address": "東京都渋谷区桜丘町23-21 文化総合ｾﾝﾀｰ大和田2階",
+        "phone": "03-3464-4780",
+        "remark": "鉄筋コンクリート造 地上12階地下1階の2階部分 608㎡（64席）",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.branch",
+      "fields": {
+        "name": "臨川みんなの図書館",
+        "address": "東京都渋谷区広尾1-9-17",
+        "phone": "03-5793-9500",
+        "remark": "鉄筋コンクリート造 地上3階建ての1・2階部分 688㎡（29席）",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.branch",
+      "fields": {
+        "name": "代々木図書館",
+        "address": "東京都渋谷区代々木3-51-8",
+        "phone": "03-3370-7566",
+        "remark": "鉄筋コンクリート造 地上4階建て区民施設の4階 320㎡（24席）",
+        "created_at": "2022-12-03"
+      }
+    },
+    {
+      "model": "book_management.branch",
+      "fields": {
+        "name": "笹塚こども図書館",
+        "address": "東京都渋谷区笹塚3-3-1",
+        "phone": "03-3378-1983",
+        "remark": "鉄筋コンクリート造 地上4階の2階部分 361㎡（28席）",
+        "created_at": "2022-12-03"
+      }
+    }
+  ]
+  

@@ -22,4 +22,5 @@ urlpatterns = [
     path('products/', include('products.urls')),
     # 日記アプリの追加
     path('diary/', include('diary.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
